@@ -10,6 +10,8 @@
         <title>Salary Calculator</title>
         <meta name="description" content="salary calculator page">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="scripts.js"></script>
         <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="styles.css">
     </head>
@@ -17,8 +19,36 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <h1 id=title>Salary Calculator</h1>
+
         
-        <script src="jquery-3.5.1.min.js"></script>
-        <script src="scripts.js"></script>
+        <div class="container input-group mb-5 addEmployee">
+        <label for="addEmployee" class="container-label">Add Employee</label>
+            <div class="row inputRow">
+                <div class="col"><input type="text" id="firstName" placeholder="First Name" aria-label="First Name"></input></div>
+                <div class="col"><input type="text" id="lastName" placeholder="Last Name" aria-label="Last Name"></input></div>
+                <div class="col"><input type="text" id="empID" placeholder="ID" aria-label="ID"></input></div>
+                <div class="col"><input type="text" id="jobTitle" placeholder="Title" aria-label="Title"></input></div>
+                <div class="col"><input type="text" id="annualSalary" placeholder="Annual Salary" aria-label="Annual Salary"></input></div>
+            </div>
+            <div class="row buttonRow">
+                <div class="col"><button type="submit" class="btn btn-primary" id="submitButton">Submit</button></div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Annual Salary</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="employeeTable">
+                <!-- jquery will add things here! -->
+            </tbody>
+        </table>
     </body>
 </html>
