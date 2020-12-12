@@ -22,19 +22,23 @@ function readyNow(){
 
 function appendDOM(){
     console.log('JS - In appendDOM function');
-    //append bootstrap framework to DOM
 
     //initial render
     renderToDOM();
-    //submit button click listener appended to inputUI form
+
+    /*A 'Submit' button should collect the form information, 
+    store the information to calculate monthly costs, 
+    append information to the DOM 
+    and clear the input fields. */
     $('#submitButton').on('click', submitClickHandler);
 } //end appendDOM
 
 function renderToDOM(){
     console.log('JS - In renderToDOM function');
-        //no stale employees please
+    //no stale employees please
     $('#employeeTable').empty();
-        //use everything in the array, and append them accordingly
+
+    //use everything in the array, and append them accordingly
     for(let i=0; i<employeeArray.length; i++){
         $('#employeeTable').append(`
         <tr class="employee" id="${i}">
@@ -43,8 +47,12 @@ function renderToDOM(){
         <td>${employeeArray[i].empID}</td>
         <td>${employeeArray[i].jobTitle}</td>
         <td>${employeeArray[i].annualSalary}</td>
+        <td><button class="deleteButton" id="${i}">Delete</button></td>
         </tr>`)
+        //employee clicked listener on each render in table to delete
+        $(`#${i}.deleteButton`).on('click', deleteClickHandler);
     }
+    calculateMonthlyCosts();
 } //end renderToDOM
 
 function submitClickHandler(){
@@ -59,7 +67,12 @@ function submitClickHandler(){
 } //end submitClickHandler
 
 function deleteClickHandler(){
-    console.log('JS - In deleteClickHandler function');
+    let deleteTarget = this.id;
+    console.log('JS - In deleteClickHandler function', deleteTarget);
+
+    employeeArray.splice(deleteTarget,1);
+
+    renderToDOM();
 } //end deleteClickHandler
 
 function clearInputs(){
@@ -69,4 +82,31 @@ function clearInputs(){
     $('#empID').val('');
     $('#jobTitle').val('');
     $('#annualSalary').val('');
+}
+
+function calculateMonthlyCosts(){
+    console.log('JS - In calculateMonthlyCosts function');
+
+    /*Using the stored information, calculate monthly 
+    costs and append this to the to DOM.*/
+    let totalMonthlyCost = 0;
+    for(let employee of employeeArray){
+        totalMonthlyCost += Number(employee.annualSalary);
+
+    }
+    //divide total annual by 12 to get monthly
+    totalMonthlyCost /= 12;
+
+    console.log('Total Monthly Cost value:', totalMonthlyCost);
+    $('#totalMonthlyValue').text( totalMonthlyCost );
+
+    /*If the total monthly cost exceeds $20,000, 
+    add a red background color to the total monthly cost.*/
+    if(totalMonthlyCost > 20000){
+        $('#totalMonthlyDisplay').css('background-color','red');
+        $('#totalMonthlyDisplay').css('color','white');
+    } else {
+        $('#totalMonthlyDisplay').css('background-color','unset');
+        $('#totalMonthlyDisplay').css('color','unset');        
+    }
 }
