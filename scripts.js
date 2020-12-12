@@ -1,13 +1,16 @@
 console.log('JS - scripts.js loaded');
 
-//create object array of type Employee to receive 5 values (load delete click handler on render later)
-const employee = [{
-    firstName: "",
-    lastName: "",
-    empID: "",
-    jobTitle: "",
-    annualSalary:
-}];
+//create Employee object prototype function
+function Employee(firstName, lastName, empID, jobTitle, annualSalary){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.empID = empID;
+    this.jobTitle = jobTitle;
+    this.annualSalary = annualSalary;
+}
+
+//create global array employeeStore to hold Employee objects
+const employeeStore = [];
 
 // Shorthand for $(document).ready(readyNow);
 $(readyNow); 
