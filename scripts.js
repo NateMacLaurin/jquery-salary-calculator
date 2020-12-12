@@ -9,6 +9,9 @@ function Employee(firstName, lastName, empID, jobTitle, annualSalary){
     this.annualSalary = annualSalary;
 }
 
+//create global variable to store USD formatted number string
+let formattedUSD = "Empty";
+
 //create global array employeeStore to hold Employee objects
 const employeeArray = [];
 
@@ -40,13 +43,18 @@ function renderToDOM(){
 
     //use everything in the array, and append them accordingly
     for(let i=0; i<employeeArray.length; i++){
+        //convert salary to USD before appending
+        formattedUSD = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD' 
+            }).format(employeeArray[i].annualSalary);
         $('#employeeTable').append(`
         <tr class="employee" id="${i}">
         <td>${employeeArray[i].firstName}</td>
         <td>${employeeArray[i].lastName}</td>
         <td>${employeeArray[i].empID}</td>
         <td>${employeeArray[i].jobTitle}</td>
-        <td>${employeeArray[i].annualSalary}</td>
+        <td>${formattedUSD}</td>
         <td><button class="deleteButton" id="${i}">Delete</button></td>
         </tr>`)
         //employee clicked listener on each render in table to delete
@@ -97,8 +105,12 @@ function calculateMonthlyCosts(){
     //divide total annual by 12 to get monthly
     totalMonthlyCost /= 12;
 
-    console.log('Total Monthly Cost value:', totalMonthlyCost);
-    $('#totalMonthlyValue').text( totalMonthlyCost );
+    //format to USD
+    formattedUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalMonthlyCost);
+    
+
+    console.log('Total Monthly Cost value:' + totalMonthlyCost + ' USD formatted: ' + formattedUSD);
+    $('#totalMonthlyValue').text( formattedUSD );
 
     /*If the total monthly cost exceeds $20,000, 
     add a red background color to the total monthly cost.*/
