@@ -43,7 +43,7 @@ function renderToDOM(){
 
     //use everything in the array, and append them accordingly
     for(let i=0; i<employeeArray.length; i++){
-        //convert salary to USD before appending
+        //convert salary string to USD format before appending
         formattedUSD = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD' 
@@ -100,12 +100,11 @@ function calculateMonthlyCosts(){
     let totalMonthlyCost = 0;
     for(let employee of employeeArray){
         totalMonthlyCost += Number(employee.annualSalary);
-
     }
     //divide total annual by 12 to get monthly
     totalMonthlyCost /= 12;
 
-    //format to USD
+    //format to USD and store in global variable
     formattedUSD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(totalMonthlyCost);
     
 
