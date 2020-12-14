@@ -36,21 +36,24 @@
                 <div class="col"><button type="submit" class="btn btn-primary" id="submitButton">Submit</button></div>
             </div>
         </div>
-        <table class="table border border-dark rounded table-striped table-success table-hover">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Annual Salary</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="employeeTable">
-                <!-- jquery will add things here! -->
-            </tbody>
-        </table>
+        <div class="container employeeTable">
+            <table class="table border border-dark rounded table-striped table-success table-hover">
+            <label for="table" class="container-label addLabel">Employees</label>    
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Annual Salary</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTable">
+                    <!-- jquery will add things here! -->
+                </tbody>
+            </table>
+        </div>
         <h2 class="text-right rounded" id="totalMonthlyDisplay">Total Monthly: 
             <span id="totalMonthlyValue"></span>
         </h2>
