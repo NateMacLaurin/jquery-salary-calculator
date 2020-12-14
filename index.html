@@ -15,16 +15,16 @@
         <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="styles.css">
     </head>
-    <body class="container ">
+    <body class="container border border-dark rounded">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1 class="text-center" id="title">Salary Calculator</h1>
+        <h1 class="text-center bg-dark text-white rounded" id="title">Salary Calculator</h1>
 
         <!--The application should have an input form that collects 
             _employee first name, last name, ID number, job title, annual salary_.-->
-        <div class="container input-group mb-5 addEmployee">
-        <label for="addEmployee" class="container-label">Add Employee</label>
+        <div class="container addEmployee">
+        <label for="addEmployee" class="container-label addLabel">Add Employee</label>
             <div class="row inputRow">
                 <div class="col"><input type="text" id="firstName" placeholder="First Name" aria-label="First Name"></input></div>
                 <div class="col"><input type="text" id="lastName" placeholder="Last Name" aria-label="Last Name"></input></div>
@@ -36,7 +36,7 @@
                 <div class="col"><button type="submit" class="btn btn-primary" id="submitButton">Submit</button></div>
             </div>
         </div>
-        <table class="table table-striped table-success table-hover">
+        <table class="table border border-dark table-striped table-success table-hover">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -51,6 +51,8 @@
                 <!-- jquery will add things here! -->
             </tbody>
         </table>
-        <h2 class="align-right" id="totalMonthlyDisplay">Total Monthly: <span id="totalMonthlyValue"></span></h2>
+        <h2 class="text-right" id="totalMonthlyDisplay">Total Monthly: 
+            <span id="totalMonthlyValue"></span>
+        </h2>
     </body>
 </html>

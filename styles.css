@@ -1,0 +1,14 @@
+#title {
+    padding: 16px;
+}
+#totalMonthlyDisplay {
+    text-align: right;
+    padding: 10px;
+}
+.buttonRow {
+    padding: 15px;
+    text-align: right;
+}
+.addLabel {
+font-size: large;
+}
